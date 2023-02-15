@@ -4,99 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-
-
-
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="146dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Para"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName4"
-        tools:ignore="MissingConstraints" />
-
-
-    <EditText
-        android:id="@+id/editTextTextPersonName4"
-        android:layout_width="146dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="88dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Ayat"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
-        tools:ignore="MissingConstraints" />
-
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="146dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="216dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Surat"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="146dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="84dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Ayat"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Search"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Search"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName4"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+    tools:context="ans.org.quranapprecyclerview.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="369dp"
-        android:layout_height="338dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:id="@+id/recylerViewAyahs"
+        android:layout_width="414dp"
+        android:layout_height="405dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="308dp"
+        android:background="@color/black"
+        android:defaultFocusHighlightEnabled="true"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="243dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="16dp"
-        android:text="Quran Application"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="23dp"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:textColor="@color/material_dynamic_neutral_variant40"
-        app:layout_constraintTop_toTopOf="parent" />
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageButton
+        android:id="@+id/githubImgBtn"
+        android:layout_width="166dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="220dp"
+        android:layout_marginBottom="44dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        tools:layout_editor_absoluteY="584dp" />
+
+    <Button
+        android:id="@+id/searchBySurah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="Search By Surah"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/searchByAyah" />
+
+    <Button
+        android:id="@+id/searchByAyah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="176dp"
+        android:text="Search By Ayah"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/ayahNumberIP"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Ayah Number"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/searchByAyah"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/surahNumberIP"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Surah Number"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/searchBySurah"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
-
