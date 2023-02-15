@@ -1,5 +1,4 @@
-package ans.org.quranapprecyclerview;
-
+package sam.org.qurannavigation;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -20,11 +19,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-import ans.org.quranapprecyclerview.R.raw;
-
 public class MainActivity extends AppCompatActivity {
-
-
 
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
@@ -42,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void readExcelFile() throws IOException {
         BufferedReader bReader;
-        InputStream iStream = getBaseContext().getResources().openRawResource(raw.ayahs);
+        InputStream iStream = getBaseContext().getResources().openRawResource(R.raw.ayahs);
         bReader = new BufferedReader(new InputStreamReader(iStream, StandardCharsets.UTF_8));
         String line;
 
@@ -55,22 +50,9 @@ public class MainActivity extends AppCompatActivity {
             int numberInSurah = Integer.parseInt(row[2]);
             int page = Integer.parseInt(row[3]);
             String surah_name = row[4];
-            String surah_name_english = row[5];
-            String surah_name_english_translation = row[6];
-            String revelationType = row[7];
-            String urdu_translation = row[8];
-            String urdu_tafseer = row[9];
-            String english_translation = row[10];
-            String english_tafseer = row[11];
-            String sindhi_translation = row[12];
-            String sindhi_tafseer = row[13];
-            String hindi_translation = row[14];
-            String hindi_tafseer = row[15];
-            String pushto_translation = row[16];
-            String pushto_tafseer = row[17];
 
             // create an object for each row
-            Ayah ayah = new Ayah(number, arabic_text, numberInSurah, page, surah_name, surah_name_english, surah_name_english_translation, revelationType, urdu_translation, urdu_tafseer, english_translation, english_tafseer, sindhi_translation, sindhi_tafseer, hindi_translation, hindi_tafseer, pushto_translation, pushto_tafseer);
+            Ayah ayah = new Ayah(number, arabic_text, numberInSurah, page, surah_name);
 
             // add the object to the list
             ayahArrayList.add(ayah);
@@ -94,11 +76,11 @@ public class MainActivity extends AppCompatActivity {
         githubButton = findViewById(R.id.githubImgBtn);
 
         // setup image
-        githubButton.setImageResource(R.drawable.icons8_github);
+        githubButton.setImageResource(R.drawable.github_text);
 
         // add click listener to github button, that'll redirect to github website
         githubButton.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/mohdanss/RecyclerViewQuranApp.git"));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/SIBTAIN-ASAD/Quran-Navigation.git"));
             startActivity(intent);
         });
 
@@ -107,12 +89,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(MainActivity.this);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new myRecyclerViewAdapter(ayahArrayList) ;
+        adapter = new myRecyclerViewAdapter(ayahArrayList);
         recyclerView.setAdapter(adapter);
 
         // everything about searching
         searchByAyahButton = findViewById(R.id.searchByAyah);
-//        searchBySurahButton.setVisibility(View.GONE);
         searchBySurahButton = findViewById(R.id.searchBySurah);
 
         ayahNumberIP = findViewById(R.id.ayahNumberIP);
@@ -127,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 ayahNumberIP.requestFocus();
 
                 // update the recycler view
-                adapter = new myRecyclerViewAdapter(ayahArrayList) ;
+                adapter = new myRecyclerViewAdapter(ayahArrayList);
                 recyclerView.setAdapter(adapter);
                 recyclerView.scrollToPosition(0);
                 return;
@@ -138,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 ayahNumberIP.requestFocus();
 
                 // update the recycler view
-                adapter = new myRecyclerViewAdapter(ayahArrayList) ;
+                adapter = new myRecyclerViewAdapter(ayahArrayList);
                 recyclerView.setAdapter(adapter);
                 recyclerView.scrollToPosition(0);
 
@@ -146,13 +127,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
             // update the recycler view
-            adapter = new myRecyclerViewAdapter(ayahArrayList) ;
+            adapter = new myRecyclerViewAdapter(ayahArrayList);
             recyclerView.setAdapter(adapter);
 
             recyclerView.scrollToPosition(ayahNumberInt - 1);
 
         });
-
 
         // search by surah button
         searchBySurahButton.setOnClickListener(v -> {
@@ -163,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                 ayahNumberIP.requestFocus();
 
                 // update the recycler view
-                adapter = new myRecyclerViewAdapter(ayahArrayList) ;
+                adapter = new myRecyclerViewAdapter(ayahArrayList);
                 recyclerView.setAdapter(adapter);
                 recyclerView.scrollToPosition(0);
                 return;
@@ -174,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
                 ayahNumberIP.requestFocus();
 
                 // update the recycler view
-                adapter = new myRecyclerViewAdapter(ayahArrayList) ;
+                adapter = new myRecyclerViewAdapter(ayahArrayList);
                 recyclerView.setAdapter(adapter);
                 recyclerView.scrollToPosition(0);
 
@@ -188,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
                 surahNumberIP.requestFocus();
 
                 // update the recycler view
-                adapter = new myRecyclerViewAdapter(ayahArrayList) ;
+                adapter = new myRecyclerViewAdapter(ayahArrayList);
                 recyclerView.setAdapter(adapter);
                 recyclerView.scrollToPosition(0);
                 return;
@@ -199,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 surahNumberIP.requestFocus();
 
                 // update the recycler view
-                adapter = new myRecyclerViewAdapter(ayahArrayList) ;
+                adapter = new myRecyclerViewAdapter(ayahArrayList);
                 recyclerView.setAdapter(adapter);
                 recyclerView.scrollToPosition(0);
 
@@ -208,8 +188,8 @@ public class MainActivity extends AppCompatActivity {
 
             // scroll to the surah
             int ayahNumberToScrollTo = 0;
-            for(int i = 0; i < ayahArrayList.size(); i++) {
-                if(ayahArrayList.get(i).surahNumber == surahNumberInt) {
+            for (int i = 0; i < ayahArrayList.size(); i++) {
+                if (ayahArrayList.get(i).surahNumber == surahNumberInt) {
                     ayahNumberToScrollTo = i;
                     break;
                 }

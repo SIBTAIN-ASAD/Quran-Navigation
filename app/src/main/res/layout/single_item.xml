@@ -16,7 +16,7 @@
         android:layout_marginEnd="64dp"
         android:text="ArabicText"
         android:textAlignment="viewEnd"
-        android:textColor="@color/white"
+        android:textColor="#F3F3F3"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +29,7 @@
         android:layout_marginEnd="44dp"
         android:text="SurahName"
         android:textAlignment="viewEnd"
-        android:textColor="@color/teal_200"
+        android:textColor="#F3F3F3"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewArabicText" />
@@ -52,7 +52,7 @@
         android:layout_marginStart="76dp"
         android:text="AyahNumber"
         android:textAlignment="viewStart"
-        android:textColor="@color/purple_200"
+        android:textColor="#F3F3F3"
         android:textColorHint="@android:color/holo_green_dark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewSurahName"
